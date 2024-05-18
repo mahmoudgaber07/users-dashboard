@@ -1,0 +1,14 @@
+@if(error){
+    <div class="alert alert-danger" role="alert">
+        Something went wrong
+    </div>
+}@else{
+    <h2 class="text-center">USER DETAILS</h2>
+    <div class="card team-cards p-0" style="width: 21rem; margin: auto;">
+        <img [src]="user.avatar" alt="avatar">
+        <div class="info card-body">
+            <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+            <p class="card-text">{{user.email}}</p>
+        </div>
+    </div>
+}

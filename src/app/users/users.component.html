@@ -1,0 +1,26 @@
+@if(error){
+    <div class="alert alert-danger" role="alert">
+        Something went wrong
+    </div>
+}@else {
+    <div class="row gap-5 justify-content-center">
+        <input class="form-control me-2" type="search" placeholder="Search By: ID,Name,Email" aria-label="Search"
+            [(ngModel)]="searchById">
+        <div *ngIf="(users | searchPipe:searchById).length === 0 && error == false">
+            NO USER FOUND
+        </div>
+        <div class="card team-cards p-0" style="width: 21rem;" *ngFor="let user of users | searchPipe:searchById">
+            <img [src]="user.avatar" alt="avatar">
+            <div class="info card-body">
+                <h5 class="card-title">{{user.first_name}} {{user.last_name}}</h5>
+                <p class="card-text">{{user.email}}</p>
+                <button class="btn btn-primary" (click)="receiveProduct(user)">View More</button>
+            </div>
+        </div>
+        <ngx-spinner type="ball-scale-multiple" bdColor="rgb(0,0,0)" size="large" color="#fff" type="ball-scale-multiple">
+            <div class="spinner-grow text-info" role="status">
+                <span class="visually-hidden"></span>
+            </div>
+        </ngx-spinner>
+    </div>
+}
